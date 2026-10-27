@@ -27,6 +27,9 @@ class DroneObservation:
 
         self.sensor_readings.append(sensor_reading)
 
+    def get_sensor_reading_count(self):
+        return len(self.sensor_readings)
+
     def display_observation(self):
         print(f"Observation ID: {self.observation_id}")
         print(f"Drone ID: {self.drone_id}")

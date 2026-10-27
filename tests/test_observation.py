@@ -38,6 +38,16 @@ class TestDroneObservation(unittest.TestCase):
         with self.assertRaises(InvalidObservationError):
             DroneObservation("", "DRONE-01", "Field A")
 
+    def test_sensor_reading_count(self):
+        observation = DroneObservation("OBS-003", "DRONE-01", "Field B")
+
+        self.assertEqual(observation.get_sensor_reading_count(), 0)
+
+        observation.add_sensor_reading(TemperatureReading(28.5))
+        observation.add_sensor_reading(HumidityReading(65))
+
+        self.assertEqual(observation.get_sensor_reading_count(), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
